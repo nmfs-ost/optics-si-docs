@@ -1,7 +1,4 @@
-# Optics SI Overview
-
-## Purpose
-The Optics Strategic Initiative (OSI) coordinates documentation, workflows, and implementation practices for optics-related projects spanning data collection through model lifecycle operations.
+# Optics SI Docs Overview
 
 ## Scope
 - Shared process definitions for cross-team consistency

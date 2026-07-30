@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Pipelines &#8212; Optics SI Docs</title>
+    <title>Shared Vocabulary: Optics SI AI/ML and Computer Vision &#8212; Optics SI Docs</title>
   
   
   
@@ -60,13 +60,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/osi/02_pipelines';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/osi/11_shared_vocabulary';</script>
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="2. Role of Annotations in Model Performance" href="../01_module/03_role_of_annotations_in_model_performance.html" />
-    <link rel="prev" title="Where to Find Data" href="../01_module/04_where_to_find_data.html" />
+    <link rel="next" title="AI/ML Model Project Lifecycle" href="../01_module/02_ml_model_lifecycle.html" />
+    <link rel="prev" title="Optics SI Docs Overview" href="01_overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -221,15 +221,15 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_overview.html">Optics SI Docs Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11_shared_vocabulary.html">Shared Vocabulary</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shared Vocabulary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_module/02_ml_model_lifecycle.html">OSI Project Lifecycle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_module/04_where_to_find_data.html">Data Sources and Discovery</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Pipelines</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Pipelines</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_pipelines.html">1. Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../01_module/03_role_of_annotations_in_model_performance.html">2. Annotation Quality and Model Impact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02_module/01_best_practices_for_annotation.html">3. Annotation Best Practices</a></li>
 
@@ -373,7 +373,7 @@
       
       
       
-      <li><a href="https://github.com/nmfs-ost/optics-si-docs/issues/new?title=Issue%20on%20page%20%2Fcontent/osi/02_pipelines.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nmfs-ost/optics-si-docs/issues/new?title=Issue%20on%20page%20%2Fcontent/osi/11_shared_vocabulary.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -403,7 +403,7 @@
       
       
       
-      <li><a href="../../_sources/content/osi/02_pipelines.md" target="_blank"
+      <li><a href="../../_sources/content/osi/11_shared_vocabulary.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -479,7 +479,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Pipelines</h1>
+    <h1>Shared Vocabulary: Optics SI AI/ML and Computer Vision</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -489,10 +489,35 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-to-end-pipeline">1.1. End-to-end pipeline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-gates">1.2. Pipeline gates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-artifacts">1.3. Required artifacts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placeholder-actions">1.4. Placeholder actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">How to use this page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-annotation-terms">Data and annotation terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">Annotation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label">Label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-schema">Label schema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-truth">Ground truth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-manifest">Dataset manifest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-validation-test-split">Train, validation, test split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-imbalance">Class imbalance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-leakage">Data leakage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-and-inference-terms">Model and inference terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-artifact">Model artifact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-image">Model image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference">Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-score">Confidence score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#epoch">Epoch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-and-performance-terms">Evaluation and performance terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map">mAP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iou">IoU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift">Drift</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-and-orchestration-terms">Workflow and orchestration terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dag">DAG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-gate">Pipeline gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-in-the-loop">Human-in-the-loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-pages">Related pages</a></li>
 </ul>
             </nav>
         </div>
@@ -504,47 +529,132 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pipelines">
-<h1><span class="section-number">1. </span>Pipelines<a class="headerlink" href="#pipelines" title="Link to this heading">#</a></h1>
-<section id="end-to-end-pipeline">
-<h2><span class="section-number">1.1. </span>End-to-end pipeline<a class="headerlink" href="#end-to-end-pipeline" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Intake source imagery and metadata.</p></li>
-<li><p>Stage datasets in approved storage paths.</p></li>
-<li><p>Annotate with agreed label schema.</p></li>
-<li><p>Run QA/QC checks and resolve defects.</p></li>
-<li><p>Prepare train/validation/test splits.</p></li>
-<li><p>Train and evaluate candidate models.</p></li>
-<li><p>Publish outputs to cloud and Girder.</p></li>
-<li><p>Create release notes and maintenance plan.</p></li>
-</ol>
-</section>
-<section id="pipeline-gates">
-<h2><span class="section-number">1.2. </span>Pipeline gates<a class="headerlink" href="#pipeline-gates" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="shared-vocabulary-optics-si-ai-ml-and-computer-vision">
+<h1>Shared Vocabulary: Optics SI AI/ML and Computer Vision<a class="headerlink" href="#shared-vocabulary-optics-si-ai-ml-and-computer-vision" title="Link to this heading">#</a></h1>
+<p>This page defines shared terms used across Optics SI workflows.
+Use these definitions to keep language consistent in SOPs, model cards, notebooks, reviews, and implementation docs.</p>
+<section id="how-to-use-this-page">
+<h2>How to use this page<a class="headerlink" href="#how-to-use-this-page" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Gate 1: Data completeness and metadata validation</p></li>
-<li><p>Gate 2: Annotation quality and inter-review agreement</p></li>
-<li><p>Gate 3: Split integrity and leakage checks</p></li>
-<li><p>Gate 4: Model acceptance metrics and failure mode review</p></li>
-<li><p>Gate 5: Deployment readiness and rollback plan</p></li>
+<li><p>Prefer these terms in documentation and issue templates.</p></li>
+<li><p>If a term can be interpreted two ways, add a short qualifier.</p></li>
+<li><p>Keep definitions operational so teams can act on them.</p></li>
 </ul>
 </section>
-<section id="required-artifacts">
-<h2><span class="section-number">1.3. </span>Required artifacts<a class="headerlink" href="#required-artifacts" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Dataset manifest and schema version</p></li>
-<li><p>Annotation guideline version and changelog</p></li>
-<li><p>Training configuration and hyperparameters</p></li>
-<li><p>Evaluation report with metric summary</p></li>
-<li><p>Release record with storage paths and ownership</p></li>
-</ul>
+<section id="data-and-annotation-terms">
+<h2>Data and annotation terms<a class="headerlink" href="#data-and-annotation-terms" title="Link to this heading">#</a></h2>
 </section>
-<section id="placeholder-actions">
-<h2><span class="section-number">1.4. </span>Placeholder actions<a class="headerlink" href="#placeholder-actions" title="Link to this heading">#</a></h2>
+<section id="annotation">
+<h2>Annotation<a class="headerlink" href="#annotation" title="Link to this heading">#</a></h2>
+<p>Human-created markup on data used for training or evaluation, such as boxes, polygons, classes, or attributes.</p>
+</section>
+<section id="label">
+<h2>Label<a class="headerlink" href="#label" title="Link to this heading">#</a></h2>
+<p>The class or attribute assigned to an annotation or sample, such as species, behavior, or object type.</p>
+</section>
+<section id="label-schema">
+<h2>Label schema<a class="headerlink" href="#label-schema" title="Link to this heading">#</a></h2>
+<p>The controlled list of labels, definitions, and rules that annotations must follow.</p>
+</section>
+<section id="ground-truth">
+<h2>Ground truth<a class="headerlink" href="#ground-truth" title="Link to this heading">#</a></h2>
+<p>The best-available reference labels used as the standard for training, QA, and evaluation.</p>
+</section>
+<section id="dataset-manifest">
+<h2>Dataset manifest<a class="headerlink" href="#dataset-manifest" title="Link to this heading">#</a></h2>
+<p>A structured record of dataset contents, versions, paths, and metadata used for traceability.</p>
+</section>
+<section id="train-validation-test-split">
+<h2>Train, validation, test split<a class="headerlink" href="#train-validation-test-split" title="Link to this heading">#</a></h2>
+<p>A partition of data into training, tuning, and final evaluation subsets to measure generalization.</p>
+</section>
+<section id="class-imbalance">
+<h2>Class imbalance<a class="headerlink" href="#class-imbalance" title="Link to this heading">#</a></h2>
+<p>A condition where some classes have far fewer examples than others, which can bias model learning.</p>
+</section>
+<section id="data-leakage">
+<h2>Data leakage<a class="headerlink" href="#data-leakage" title="Link to this heading">#</a></h2>
+<p>Unintended sharing of information between splits or stages that inflates performance metrics.</p>
+</section>
+<section id="model-and-inference-terms">
+<h2>Model and inference terms<a class="headerlink" href="#model-and-inference-terms" title="Link to this heading">#</a></h2>
+</section>
+<section id="model">
+<h2>Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
+<p>A trained parameter set that maps input data to predicted outputs under a defined task.</p>
+</section>
+<section id="model-artifact">
+<h2>Model artifact<a class="headerlink" href="#model-artifact" title="Link to this heading">#</a></h2>
+<p>A versioned, shareable model package used for inference, evaluation, or deployment.</p>
+</section>
+<section id="model-image">
+<h2>Model image<a class="headerlink" href="#model-image" title="Link to this heading">#</a></h2>
+<p>In Optics SI docs, this should mean an input image processed by a model.
+If discussing deployment containers, use the term container image to avoid ambiguity.</p>
+</section>
+<section id="inference">
+<h2>Inference<a class="headerlink" href="#inference" title="Link to this heading">#</a></h2>
+<p>Running a trained model on new data to generate predictions.</p>
+</section>
+<section id="prediction">
+<h2>Prediction<a class="headerlink" href="#prediction" title="Link to this heading">#</a></h2>
+<p>A model output for a sample, such as class, location, confidence score, or segmentation mask.</p>
+</section>
+<section id="confidence-score">
+<h2>Confidence score<a class="headerlink" href="#confidence-score" title="Link to this heading">#</a></h2>
+<p>A model-estimated likelihood tied to a prediction, used for thresholds and review prioritization.</p>
+</section>
+<section id="epoch">
+<h2>Epoch<a class="headerlink" href="#epoch" title="Link to this heading">#</a></h2>
+<p>One full pass through the training dataset during optimization.</p>
+</section>
+<section id="evaluation-and-performance-terms">
+<h2>Evaluation and performance terms<a class="headerlink" href="#evaluation-and-performance-terms" title="Link to this heading">#</a></h2>
+</section>
+<section id="precision">
+<h2>Precision<a class="headerlink" href="#precision" title="Link to this heading">#</a></h2>
+<p>The fraction of predicted positives that are correct.</p>
+</section>
+<section id="recall">
+<h2>Recall<a class="headerlink" href="#recall" title="Link to this heading">#</a></h2>
+<p>The fraction of actual positives that are correctly detected.</p>
+</section>
+<section id="map">
+<h2>mAP<a class="headerlink" href="#map" title="Link to this heading">#</a></h2>
+<p>Mean Average Precision, a detection metric summarizing precision and recall behavior across classes and thresholds.</p>
+</section>
+<section id="iou">
+<h2>IoU<a class="headerlink" href="#iou" title="Link to this heading">#</a></h2>
+<p>Intersection over Union, the overlap ratio between predicted and reference regions.</p>
+</section>
+<section id="drift">
+<h2>Drift<a class="headerlink" href="#drift" title="Link to this heading">#</a></h2>
+<p>A change in data characteristics or relationships over time that can reduce model performance.</p>
+</section>
+<section id="workflow-and-orchestration-terms">
+<h2>Workflow and orchestration terms<a class="headerlink" href="#workflow-and-orchestration-terms" title="Link to this heading">#</a></h2>
+</section>
+<section id="dag">
+<h2>DAG<a class="headerlink" href="#dag" title="Link to this heading">#</a></h2>
+<p>Directed Acyclic Graph, a workflow representation where tasks run in dependency order without cycles.</p>
+</section>
+<section id="pipeline-gate">
+<h2>Pipeline gate<a class="headerlink" href="#pipeline-gate" title="Link to this heading">#</a></h2>
+<p>A quality checkpoint between workflow stages that must be passed before progressing.</p>
+</section>
+<section id="human-in-the-loop">
+<h2>Human-in-the-loop<a class="headerlink" href="#human-in-the-loop" title="Link to this heading">#</a></h2>
+<p>A review pattern where people validate or correct predictions before final use or retraining.</p>
+</section>
+<section id="related-pages">
+<h2>Related pages<a class="headerlink" href="#related-pages" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Add reference pipeline diagram for OSI systems.</p></li>
-<li><p>Add thresholds for each gate.</p></li>
-<li><p>Add escalation path for blocked pipeline stages.</p></li>
+<li><p><a class="reference internal" href="01_overview.html"><span class="std std-doc">Overview</span></a></p></li>
+<li><p><a class="reference internal" href="02_pipelines.html"><span class="std std-doc">Pipelines</span></a></p></li>
+<li><p><a class="reference internal" href="../01_module/02_ml_model_lifecycle.html"><span class="std std-doc">OSI Project Lifecycle</span></a></p></li>
+<li><p><a class="reference internal" href="../02_module/01_best_practices_for_annotation.html"><span class="std std-doc">Annotation and QA Best Practices</span></a></p></li>
+<li><p><a class="reference internal" href="../04_module/04_model_eval.html"><span class="std std-doc">Model Evaluation Guidance</span></a></p></li>
+<li><p><a class="reference internal" href="../04_module/00_model_deployment.html"><span class="std std-doc">Deployment Patterns</span></a></p></li>
 </ul>
 </section>
 </section>
@@ -580,20 +690,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../01_module/04_where_to_find_data.html"
+       href="01_overview.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Where to Find Data</p>
+        <p class="prev-next-title">Optics SI Docs Overview</p>
       </div>
     </a>
     <a class="right-next"
-       href="../01_module/03_role_of_annotations_in_model_performance.html"
+       href="../01_module/02_ml_model_lifecycle.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Role of Annotations in Model Performance</p>
+        <p class="prev-next-title">AI/ML Model Project Lifecycle</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -615,10 +725,35 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-to-end-pipeline">1.1. End-to-end pipeline</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-gates">1.2. Pipeline gates</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-artifacts">1.3. Required artifacts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placeholder-actions">1.4. Placeholder actions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-page">How to use this page</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-annotation-terms">Data and annotation terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotation">Annotation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label">Label</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#label-schema">Label schema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-truth">Ground truth</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-manifest">Dataset manifest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-validation-test-split">Train, validation, test split</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-imbalance">Class imbalance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-leakage">Data leakage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-and-inference-terms">Model and inference terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-artifact">Model artifact</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-image">Model image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference">Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction">Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-score">Confidence score</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#epoch">Epoch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-and-performance-terms">Evaluation and performance terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map">mAP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iou">IoU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drift">Drift</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-and-orchestration-terms">Workflow and orchestration terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dag">DAG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-gate">Pipeline gate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-in-the-loop">Human-in-the-loop</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-pages">Related pages</a></li>
 </ul>
   </nav></div>
 
