@@ -1,0 +1,6 @@
+jupyter-book<2
+ghp-import
+requests
+Pillow
+sphinx-revealjs
+sphinxcontrib-mermaid

@@ -1,0 +1,62 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Optics SI Hub
+author: Optics Strategic Initiative Contributors
+copyright: "2026"
+logo: docs/images/OPTICS_SI_LOGO_DRAFT_bgt.png
+
+# Execution settings for notebooks
+execute:
+  execute_notebooks: "off"
+  timeout: 600
+  allow_errors: false
+  exclude_patterns:
+    - '*_notebook.ipynb'
+
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: optics_si_hub.tex
+
+# Repository settings
+repository:
+  url: https://github.com/MichaelAkridge-NOAA/optics-si-hub  # Online location of your book
+  branch: main  # Which branch of the repository should be used when creating links
+
+# Enable Reveal.js slides
+html:
+  use_issues_button: true
+  use_repository_button: true
+  use_download_button: true
+  use_revealjs: true
+  revealjs_theme: "white"
+  revealjs_scroll: true  #  Allow scrolling inside slides
+  revealjs_auto_slide: 0
+  favicon: "docs/images/favicon.ico"
+  extra_footer: |
+    <strong>Optics SI Hub</strong> | NOAA Open Science<br>
+    <a href="mailto:michael.akridge@noaa.gov">Contact</a> | <a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub">GitHub</a><br>
+  theme:
+    name: sphinx_book_theme
+    options:
+      page_width: "100%"
+      content_width: "100%"
+      sidebar_width: "20rem"
+# Launch button settings
+launch_buttons:
+  notebook_interface: jupyterlab
+  binderhub_url: "https://mybinder.org"
+  colab_url: "https://colab.research.google.com"
+  thebe: true
+
+# Sphinx settings
+sphinx:
+  config:
+    html_show_copyright: false
+    body_max_width: none
+  extra_extensions:
+    - sphinxcontrib.mermaid
+myst_enable_extensions:
+  - html_admonition
+  - html_image
