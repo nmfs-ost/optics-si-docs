@@ -1,0 +1,124 @@
+/* Ensure the primary sidebar toggle is visible and clickable in the built Jupyter Book site */
+.bd-header button.sidebar-toggle.primary-toggle,
+.bd-header-article button.sidebar-toggle.primary-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Hide the article-header duplicate toggle button */
+.bd-header-article button.sidebar-toggle.primary-toggle.btn.btn-sm {
+  display: none !important;
+}
+
+/* Remove hover/focus underline effect on the top-left navbar toggle */
+.bd-header button.sidebar-toggle.primary-toggle.pst-navbar-icon::before {
+  display: none !important;
+  content: none !important;
+}
+
+.bd-header button.sidebar-toggle.primary-toggle.pst-navbar-icon:hover::before,
+.bd-header button.sidebar-toggle.primary-toggle.pst-navbar-icon:focus::before,
+.bd-header button.sidebar-toggle.primary-toggle.pst-navbar-icon:focus-visible::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Keep top-right header controls grouped and right-aligned */
+.bd-header .navbar-header-items,
+.bd-header-article .header-article-items {
+  width: 100%;
+}
+
+.bd-header .navbar-header-items__end,
+.bd-header-article .header-article-items__end {
+  margin-left: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+
+.bd-header-article .article-header-buttons,
+.bd-header .article-header-buttons {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 0.25rem;
+}
+
+/* Top-header host for relocated GitHub/download/fullscreen controls */
+.bd-header .custom-header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.bd-header .custom-header-actions .article-header-buttons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.25rem;
+}
+
+/* Normalize size of all top-right action buttons/icons */
+.bd-header .custom-header-actions .article-header-buttons > * > .btn,
+.bd-header .custom-header-actions .article-header-buttons > .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 2.4rem !important;
+  height: 2.4rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  font-size: 1.2rem !important;
+}
+
+.bd-header .custom-header-actions .article-header-buttons .btn svg {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+}
+
+/* Remove dropdown caret so Source/Download match icon-only buttons */
+.bd-header .custom-header-actions .article-header-buttons .btn.dropdown-toggle::after {
+  display: none !important;
+}
+
+/* Keep only the intended four controls in the top-right group */
+.bd-header .custom-header-actions .article-header-buttons .search-button,
+.bd-header .custom-header-actions .article-header-buttons .secondary-toggle {
+  display: none !important;
+}
+
+/* Two-state theme switch visual: hide system/auto indicator */
+.theme-switch-button .theme-switch[data-mode="auto"] {
+  display: none !important;
+}
+
+/* Ensure moved GitHub/Download controls use header icon color instead of Bootstrap dark button color */
+.bd-header .custom-header-actions .article-header-buttons .btn.dropdown-toggle {
+  color: var(--pst-color-muted) !important;
+  border: none !important;
+  background: transparent !important;
+  font-size: 1.3rem;
+}
+
+.bd-header .custom-header-actions .article-header-buttons .btn.dropdown-toggle:hover,
+.bd-header .custom-header-actions .article-header-buttons .btn.dropdown-toggle:focus,
+.bd-header .custom-header-actions .article-header-buttons .btn.dropdown-toggle:focus-visible {
+  color: var(--pst-color-text-base) !important;
+  box-shadow: none !important;
+}
+
+/* Move the top search control near the left sidebar toggle */
+.bd-header .custom-header-search {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  margin-right: 1rem;
+}
+
+.bd-header .custom-header-search .search-button-field.search-button__button {
+  margin: 0;
+}
