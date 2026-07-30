@@ -11,6 +11,8 @@ parts:
     numbered: false
     chapters:
       - file: content/osi/01_overview.md
+      - file: content/osi/11_shared_vocabulary.md
+        title: Shared Vocabulary
       - file: content/01_module/02_ml_model_lifecycle.md
         title: OSI Project Lifecycle
       - file: content/01_module/04_where_to_find_data.md
