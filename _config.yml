@@ -34,6 +34,10 @@ html:
   revealjs_scroll: true  #  Allow scrolling inside slides
   revealjs_auto_slide: 0
   favicon: "docs/images/favicon.ico"
+  extra_css:
+    - _static/custom.css
+  extra_js:
+    - _static/custom.js
   extra_footer: |
     <strong>Optics SI Docs</strong> | NOAA Open Science<br>
     <a href="mailto:michael.akridge@noaa.gov">Contact</a> | <a href="https://github.com/nmfs-ost/optics-si-docs">GitHub</a><br>

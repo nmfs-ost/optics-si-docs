@@ -1,3 +1,5 @@
 .ipynb_checkpoints/
 .git/
 *.$$$
+.vscode/settings.json
+/_build
