@@ -1,7 +1,7 @@
-# Optics SI Docs
+# Optics SI Docs | DRAFT(in development)
 <a href="https://michaelakridge-noaa.github.io/optics-si-hub/" target="_blank"><img src="./docs/images/OPTICS_SI_LOGO_DRAFT_bgt.png" align="right" alt="Optics SI logo" width="360"/></a>
 
-Operational documentation and implementation guidance for the Optics Strategic Initiative (OSI) Cloud.
+Centralized operational documentation and implementation guidance for the Optics Strategic Initiative (OSI) Cloud processes.
 
 ## What this covers
 - End-to-end data and annotation pipelines
