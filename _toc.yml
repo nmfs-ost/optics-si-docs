@@ -11,16 +11,18 @@ parts:
     numbered: false
     chapters:
       - file: content/osi/01_overview.md
+
+  - caption: Shared Vocabulary
+    numbered: false
+    chapters:
       - file: content/osi/11_shared_vocabulary.md
         title: Shared Vocabulary
-      - file: content/01_module/02_ml_model_lifecycle.md
-        title: OSI Project Lifecycle
-      - file: content/01_module/04_where_to_find_data.md
-        title: Data Sources and Discovery
 
-  - caption: Pipelines
+  - caption: Pipeline Overviews
     numbered: true
     chapters:
+      - file: content/01_module/02_ml_model_lifecycle.md
+        title: Model Lifecycle Examples
       - file: content/osi/02_pipelines.md
       - file: content/01_module/03_role_of_annotations_in_model_performance.md
         title: Annotation Quality and Model Impact
@@ -31,28 +33,12 @@ parts:
       - file: content/03_module/02_dataset_prep.md
         title: Dataset Preparation Standards
 
-  - caption: Hardware
-    numbered: false
-    chapters:
-      - file: content/osi/03_hardware_camera_info.md
-
-  - caption: Software and Tools
-    numbered: false
-    chapters:
-      - file: content/osi/04_software_tools.md
-      - file: content/osi/10_optics_si_toolbox_scope.md
-        title: Optics SI Toolbox Scope
-      - file: content/02_module/02_annotation_tools.md
-        title: Annotation Tooling Comparison
-      - file: content/03_module/01_annotation_example.md
-        title: Annotation Exercise Walkthrough
-
   - caption: Cloud Storage
     numbered: false
     chapters:
       - file: content/osi/05_cloud_storage.md
 
-  - caption: Cloud Processing
+  - caption: Cloud Processing Pipelines
     numbered: false
     chapters:
       - file: content/osi/06_cloud_processing_viame_web_app.md
@@ -89,9 +75,27 @@ parts:
       - file: content/03_2025_Huggingface_User_Examples.ipynb
         title: Hugging Face User Examples
 
+  - caption: Hardware
+    numbered: false
+    chapters:
+      - file: content/osi/03_hardware_camera_info.md
+
+  - caption: Software and Tools
+    numbered: false
+    chapters:
+      - file: content/osi/04_software_tools.md
+      - file: content/osi/10_optics_si_toolbox_scope.md
+        title: Optics SI Toolbox Scope
+      - file: content/02_module/02_annotation_tools.md
+        title: Annotation Tooling Comparison
+      - file: content/03_module/01_annotation_example.md
+        title: Annotation Exercise Walkthrough
+  
   - caption: Resources
     numbered: false
     chapters:
+      - file: content/01_module/04_where_to_find_data.md
+        title: Data Sources and Discovery
       - file: content/01_resources.md
       - file: content/osi/09_optics_si_main_reference.md
         title: Optics-SI-Main Reference Guide
