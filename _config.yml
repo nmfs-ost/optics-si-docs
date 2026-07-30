@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Optics SI Hub
+title: Optics SI Docs
 author: Optics Strategic Initiative Contributors
 copyright: "2026"
 logo: docs/images/OPTICS_SI_LOGO_DRAFT_bgt.png
@@ -21,7 +21,7 @@ latex:
 
 # Repository settings
 repository:
-  url: https://github.com/MichaelAkridge-NOAA/optics-si-hub  # Online location of your book
+  url: https://github.com/nmfs-ost/optics-si-docs  # Online location of your book
   branch: main  # Which branch of the repository should be used when creating links
 
 # Enable Reveal.js slides
@@ -35,8 +35,8 @@ html:
   revealjs_auto_slide: 0
   favicon: "docs/images/favicon.ico"
   extra_footer: |
-    <strong>Optics SI Hub</strong> | NOAA Open Science<br>
-    <a href="mailto:michael.akridge@noaa.gov">Contact</a> | <a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub">GitHub</a><br>
+    <strong>Optics SI Docs</strong> | NOAA Open Science<br>
+    <a href="mailto:michael.akridge@noaa.gov">Contact</a> | <a href="https://github.com/nmfs-ost/optics-si-docs">GitHub</a><br>
   theme:
     name: sphinx_book_theme
     options:
