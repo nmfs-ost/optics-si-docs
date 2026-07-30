@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Vision CNN Models for Fisheries &#8212; Optics SI Hub</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_module/05_cnn_finetuning_workflow';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../00_welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/OPTICS_SI_LOGO_DRAFT_bgt.png" class="logo__image only-light" alt="Optics SI Hub - Home"/>
+    <img src="../../_static/OPTICS_SI_LOGO_DRAFT_bgt.png" class="logo__image only-dark pst-js-only" alt="Optics SI Hub - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00_welcome.html">
+                    Welcome to the Optics SI Docs | DRAFT
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/01_overview.html">Optics SI Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_module/02_ml_model_lifecycle.html">OSI Project Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_module/04_where_to_find_data.html">Data Sources and Discovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pipelines</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/02_pipelines.html">1. Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_module/03_role_of_annotations_in_model_performance.html">2. Annotation Quality and Model Impact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_module/01_best_practices_for_annotation.html">3. Annotation Best Practices</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="00_EDA.html">4. Exploratory Data Analysis for OSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_dataset_prep.html">5. Dataset Preparation Standards</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/03_hardware_camera_info.html">Hardware and Camera Information</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software and Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/04_software_tools.html">Software and Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osi/10_optics_si_toolbox_scope.html">Optics SI Toolbox Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_module/02_annotation_tools.html">Annotation Tools</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="01_annotation_example.html">Annotation Exercise Walkthrough</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Storage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/05_cloud_storage.html">Cloud Storage</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/06_cloud_processing_viame_web_app.html">Cloud Processing: VIAME Web App</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models and Integration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/07_viame_ultralytics_models.html">6. VIAME and Ultralytics Models for Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osi/08_bring_your_own_model.html">7. Bring Your Own Trained Model to OSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_model_training.html">8. Model Training Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_module/04_model_eval.html">9. Model Evaluation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_module/00_model_deployment.html">10. Deployment Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_module/03_model_maintenance.html">11. Model Maintenance and Drift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_model_card.html">12. Model Card Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_EDA_example.html">EDA Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_EDA_example_2.html">🛠️ Exercise - Exploratory Data Analysis (EDA) | Example 02 Using FiftyOne Tool</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="02_dataset_prep_example.html">Dataset Prep Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_model_training_example.html">🛠️ Exercise - Model Training</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_module/02_ai4me_api_google_colab_demo.html">AI4ME | AI for Marine Ecosystems API Demo</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_2025_Huggingface_User_Examples.html">Hugging Face User Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osi/09_optics_si_main_reference.html">Optics-SI-Main Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_module/01_qa_roundtable.html">Implementation Roundtable</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nmfs-ost.github.io/PAM_National_Network/">National PAM Network Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/MichaelAkridge-NOAA/awesome-ocean-ai">Awesome Ocean AI Resources</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/noaa-ncai/learning-journey/">NOAA NCAI Learning Journey</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub/issues/new?title=Issue%20on%20page%20%2Fcontent/03_module/05_cnn_finetuning_workflow.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/03_module/05_cnn_finetuning_workflow.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vision CNN Models for Fisheries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">1. Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-dataset">2. Prepare the Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-tune-a-baseline-model">3. Fine-Tune a Baseline Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-export">4. Evaluate &amp; Export</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">5. Key Takeaways</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="vision-cnn-models-for-fisheries">
+<h1>Vision CNN Models for Fisheries<a class="headerlink" href="#vision-cnn-models-for-fisheries" title="Link to this heading">#</a></h1>
+<p>This short notebook outlines a practical workflow for fine-tuning a foundational vision model on fisheries imagery. It is designed for a one hour hands-on session.</p>
+<section id="environment-setup">
+<h2>1. Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Install the <strong>Ultralytics</strong> package, which provides the YOLO11 framework.</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>ultralytics
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>(Optional) Use a GPU-enabled environment (local CUDA workstation, Google Colab, etc.) for faster training.</p></li>
+</ul>
+</section>
+<section id="prepare-the-dataset">
+<h2>2. Prepare the Dataset<a class="headerlink" href="#prepare-the-dataset" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Organize your data using the YOLO directory structure:</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>datasets/
+  fish_detection/
+    images/
+      train/  # training images
+      val/    # validation images
+    labels/
+      train/  # label files in YOLO format
+      val/    # validation label files
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">data.yaml</span></code> file containing class names and paths to the image and label directories.</p></li>
+</ul>
+</section>
+<section id="fine-tune-a-baseline-model">
+<h2>3. Fine-Tune a Baseline Model<a class="headerlink" href="#fine-tune-a-baseline-model" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Start from a pretrained checkpoint (e.g., <code class="docutils literal notranslate"><span class="pre">yolo11n.pt</span></code>).</p></li>
+<li><p>Run training with a command similar to:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yolo<span class="w"> </span><span class="nv">task</span><span class="o">=</span>detect<span class="w"> </span><span class="nv">mode</span><span class="o">=</span>train<span class="w"> </span><span class="nv">model</span><span class="o">=</span>yolo11n.pt<span class="w"> </span><span class="nv">data</span><span class="o">=</span>data.yaml<span class="w"> </span><span class="nv">epochs</span><span class="o">=</span><span class="m">50</span><span class="w"> </span><span class="nv">imgsz</span><span class="o">=</span><span class="m">640</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Monitor metrics such as mAP, precision, and recall. Adjust the number of epochs or learning rate if necessary.</p></li>
+</ul>
+</section>
+<section id="evaluate-export">
+<h2>4. Evaluate &amp; Export<a class="headerlink" href="#evaluate-export" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Evaluate on the validation set:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yolo<span class="w"> </span><span class="nv">mode</span><span class="o">=</span>val<span class="w"> </span><span class="nv">model</span><span class="o">=</span>runs/detect/train/weights/best.pt<span class="w"> </span><span class="nv">data</span><span class="o">=</span>data.yaml
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Export the model for deployment:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yolo<span class="w"> </span><span class="nv">mode</span><span class="o">=</span><span class="nb">export</span><span class="w"> </span><span class="nv">model</span><span class="o">=</span>runs/detect/train/weights/best.pt<span class="w"> </span><span class="nv">format</span><span class="o">=</span>onnx
+</pre></div>
+</div>
+</section>
+<section id="key-takeaways">
+<h2>5. Key Takeaways<a class="headerlink" href="#key-takeaways" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fine-tuning leverages pretrained models to reduce data requirements and shorten training time.</p></li>
+<li><p>Maintain a consistent dataset structure and ensure labels are accurate.</p></li>
+<li><p>Ultralytics provides simple commands to train, validate, and export models for fisheries detection tasks while streamline the process.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "MichaelAkridge-NOAA/optics-si-hub",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/03_module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">1. Environment Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-dataset">2. Prepare the Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fine-tune-a-baseline-model">3. Fine-Tune a Baseline Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-export">4. Evaluate &amp; Export</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-takeaways">5. Key Takeaways</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Optics Strategic Initiative Contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <strong>Optics SI Hub</strong> | NOAA Open Science<br>
+<a href="mailto:michael.akridge@noaa.gov">Contact</a> | <a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub">GitHub</a><br>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

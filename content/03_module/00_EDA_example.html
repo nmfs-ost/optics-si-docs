@@ -1,0 +1,1339 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>🛠️ Exercise - Exploratory Data Analysis (EDA) | Example 01 &#8212; Optics SI Hub</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/03_module/00_EDA_example';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="🛠️ Exercise - Exploratory Data Analysis (EDA) | Example 02 Using FiftyOne Tool" href="00_EDA_example_2.html" />
+    <link rel="prev" title="12. Model Card – One‑Page Quick Guide" href="../04_model_card.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../00_welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/OPTICS_SI_LOGO_DRAFT_bgt.png" class="logo__image only-light" alt="Optics SI Hub - Home"/>
+    <img src="../../_static/OPTICS_SI_LOGO_DRAFT_bgt.png" class="logo__image only-dark pst-js-only" alt="Optics SI Hub - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../00_welcome.html">
+                    Welcome to the Optics SI Docs | DRAFT
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/01_overview.html">Optics SI Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_module/02_ml_model_lifecycle.html">OSI Project Lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_module/04_where_to_find_data.html">Data Sources and Discovery</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Pipelines</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/02_pipelines.html">1. Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01_module/03_role_of_annotations_in_model_performance.html">2. Annotation Quality and Model Impact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_module/01_best_practices_for_annotation.html">3. Annotation Best Practices</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="00_EDA.html">4. Exploratory Data Analysis for OSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_dataset_prep.html">5. Dataset Preparation Standards</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hardware</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/03_hardware_camera_info.html">Hardware and Camera Information</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software and Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/04_software_tools.html">Software and Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osi/10_optics_si_toolbox_scope.html">Optics SI Toolbox Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_module/02_annotation_tools.html">Annotation Tools</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="01_annotation_example.html">Annotation Exercise Walkthrough</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Storage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/05_cloud_storage.html">Cloud Storage</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/06_cloud_processing_viame_web_app.html">Cloud Processing: VIAME Web App</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models and Integration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../osi/07_viame_ultralytics_models.html">6. VIAME and Ultralytics Models for Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osi/08_bring_your_own_model.html">7. Bring Your Own Trained Model to OSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_model_training.html">8. Model Training Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_module/04_model_eval.html">9. Model Evaluation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_module/00_model_deployment.html">10. Deployment Patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_module/03_model_maintenance.html">11. Model Maintenance and Drift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04_model_card.html">12. Model Card Template</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Hands-On Notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">EDA Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_EDA_example_2.html">🛠️ Exercise - Exploratory Data Analysis (EDA) | Example 02 Using FiftyOne Tool</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="02_dataset_prep_example.html">Dataset Prep Notebook Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_model_training_example.html">🛠️ Exercise - Model Training</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04_module/02_ai4me_api_google_colab_demo.html">AI4ME | AI for Marine Ecosystems API Demo</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03_2025_Huggingface_User_Examples.html">Hugging Face User Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01_resources.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osi/09_optics_si_main_reference.html">Optics-SI-Main Reference Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02_faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_module/01_qa_roundtable.html">Implementation Roundtable</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nmfs-ost.github.io/PAM_National_Network/">National PAM Network Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/MichaelAkridge-NOAA/awesome-ocean-ai">Awesome Ocean AI Resources</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/noaa-ncai/learning-journey/">NOAA NCAI Learning Journey</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/MichaelAkridge-NOAA/optics-si-hub/main?urlpath=lab/tree/content/03_module/00_EDA_example.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/MichaelAkridge-NOAA/optics-si-hub/blob/main/content/03_module/00_EDA_example.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub/issues/new?title=Issue%20on%20page%20%2Fcontent/03_module/00_EDA_example.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/03_module/00_EDA_example.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>🛠️ Exercise - Exploratory Data Analysis (EDA) | Example 01</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-sample-dataset">Workshop Sample Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-dataset">Download Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-dataset">Extract Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-yolo-object-detection-dataset-should-be-in-1-of-2-folder-structures">A YOLO Object Detection Dataset should be in 1 of 2 folder structures</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-exploratory-data-analysis-eda-example-01">
+<h1>🛠️ Exercise - Exploratory Data Analysis (EDA) | Example 01<a class="headerlink" href="#exercise-exploratory-data-analysis-eda-example-01" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/MichaelAkridge-NOAA/ai4me-cookbook/blob/main/content/03_module/00_EDA_example.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<ul class="simple">
+<li><p>helps you understand dataset</p></li>
+<li><p>detect potential issues</p></li>
+<li><p>and refine preprocessing steps</p></li>
+</ul>
+<section id="workshop-sample-dataset">
+<h2>Workshop Sample Dataset<a class="headerlink" href="#workshop-sample-dataset" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://storage.googleapis.com/nmfs_odp_pifsc/PIFSC/ESD/ARP/pifsc-ai-data-repository/fish-detection/workshop/fish_dataset.zip">https://storage.googleapis.com/nmfs_odp_pifsc/PIFSC/ESD/ARP/pifsc-ai-data-repository/fish-detection/workshop/fish_dataset.zip</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 1: Install Required Libraries (If Not Installed)</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">opencv</span><span class="o">-</span><span class="n">python</span> <span class="n">numpy</span> <span class="n">pandas</span> <span class="n">matplotlib</span> <span class="n">tqdm</span> <span class="n">albumentations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 2: Import Necessary Libraries</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 3: Define Dataset URL and Paths</span>
+<span class="n">dataset_url</span> <span class="o">=</span> <span class="s2">&quot;https://storage.googleapis.com/nmfs_odp_pifsc/PIFSC/ESD/ARP/pifsc-ai-data-repository/fish-detection/workshop/fish_dataset.zip&quot;</span>
+
+<span class="n">dataset_zip_path</span> <span class="o">=</span> <span class="s2">&quot;/content/fish_dataset.zip&quot;</span>
+<span class="n">dataset_extract_path</span> <span class="o">=</span> <span class="s2">&quot;/content/fish_dataset/&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-dataset">
+<h2>Download Dataset<a class="headerlink" href="#download-dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 4: Download the Dataset from Google Cloud Storage</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">total_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content-length&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">,</span> <span class="n">tqdm</span><span class="p">(</span>
+        <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Downloading Dataset&quot;</span><span class="p">,</span>
+        <span class="n">total</span><span class="o">=</span><span class="n">total_size</span><span class="p">,</span>
+        <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+        <span class="n">unit_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">unit_divisor</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
+            <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="n">bar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="c1"># Download only if it doesn&#39;t exist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dataset_zip_path</span><span class="p">):</span>
+    <span class="n">download_file</span><span class="p">(</span><span class="n">dataset_url</span><span class="p">,</span> <span class="n">dataset_zip_path</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✔ Dataset already downloaded.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading Dataset: 100%|██████████| 39.5M/39.5M [00:04&lt;00:00, 9.34MB/s]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-dataset">
+<h2>Extract Dataset<a class="headerlink" href="#extract-dataset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 5: Extract the Dataset</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_zip</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="n">extract_to</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+        <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">extract_to</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✔ Extracted dataset to </span><span class="si">{</span><span class="n">extract_to</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Extract only if the folder does not exist</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dataset_extract_path</span><span class="p">):</span>
+    <span class="n">extract_zip</span><span class="p">(</span><span class="n">dataset_zip_path</span><span class="p">,</span> <span class="n">dataset_extract_path</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✔ Dataset already extracted.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✔ Extracted dataset to /content/fish_dataset/
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-yolo-object-detection-dataset-should-be-in-1-of-2-folder-structures">
+<h2>A YOLO Object Detection Dataset should be in 1 of 2 folder structures<a class="headerlink" href="#a-yolo-object-detection-dataset-should-be-in-1-of-2-folder-structures" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fish_dataset/
+  ├── train/
+  │   ├── images/
+  │   ├── labels/
+  ├── val/
+  │   ├── images/
+  │   ├── labels/
+</pre></div>
+</div>
+<p>OR</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fish_dataset/
+├── images/
+│   ├── train/
+│   ├── val/
+│   ├── test/
+├── labels/
+│   ├── train/
+│   ├── val/
+│   ├── test/
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Print dataset.yaml content</span>
+<span class="n">yaml_path</span> <span class="o">=</span> <span class="s2">&quot;/content/fish_dataset/dataset.yaml&quot;</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ dataset.yaml not found!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>train: images/train
+val: images/val
+
+# Number of classes
+nc: 1
+
+# Class names
+names: [&#39;fish&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 6: Verify Dataset Structure</span>
+<span class="k">for</span> <span class="n">split</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">]:</span>
+    <span class="n">img_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_extract_path</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span> <span class="n">split</span><span class="p">)</span>
+    <span class="n">lbl_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_extract_path</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">split</span><span class="p">)</span>
+
+    <span class="c1"># Ensure folders exist before counting files</span>
+    <span class="n">img_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">img_path</span><span class="p">))</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">lbl_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">lbl_path</span><span class="p">))</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">lbl_path</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✔ </span><span class="si">{</span><span class="n">split</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> - Images: </span><span class="si">{</span><span class="n">img_count</span><span class="si">}</span><span class="s2">, Labels: </span><span class="si">{</span><span class="n">lbl_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✔ TRAIN - Images: 786, Labels: 786
+✔ VAL - Images: 196, Labels: 196
+✔ TEST - Images: 0, Labels: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 7: Run Exploratory Data Analysis (EDA)</span>
+<span class="n">dataset_root</span> <span class="o">=</span> <span class="n">dataset_extract_path</span>  <span class="c1"># Set dataset path</span>
+
+<span class="c1"># Define paths for train and validation sets</span>
+<span class="n">train_img_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">train_lbl_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">val_img_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">)</span>
+<span class="n">val_lbl_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_root</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load train and validation image/label paths</span>
+<span class="n">train_image_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">train_img_dir</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">)))</span>
+<span class="n">train_label_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">train_lbl_dir</span><span class="p">,</span> <span class="s2">&quot;*.txt&quot;</span><span class="p">)))</span>
+
+<span class="n">val_image_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">val_img_dir</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">)))</span>
+<span class="n">val_label_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">val_lbl_dir</span><span class="p">,</span> <span class="s2">&quot;*.txt&quot;</span><span class="p">)))</span>
+
+<span class="c1"># Print dataset statistics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📊 Total Training Images: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_image_paths</span><span class="p">)</span><span class="si">}</span><span class="s2">, Total Training Labels: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_label_paths</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📊 Total Validation Images: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">val_image_paths</span><span class="p">)</span><span class="si">}</span><span class="s2">, Total Validation Labels: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">val_label_paths</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>📊 Total Training Images: 786, Total Training Labels: 786
+📊 Total Validation Images: 196, Total Validation Labels: 196
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 9: Class Distribution Analysis</span>
+<span class="n">class_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">label_path</span> <span class="ow">in</span> <span class="n">val_label_paths</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">label_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="n">class_id</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">class_counts</span><span class="p">[</span><span class="n">class_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">df_class_distribution</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">class_counts</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Class_ID&quot;</span><span class="p">,</span> <span class="s2">&quot;Count&quot;</span><span class="p">])</span>
+<span class="n">df_class_distribution</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_class_distribution</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-80bfbb1f-ef21-4eff-8ac6-52654e1cd7db" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Class_ID</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>457</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-80bfbb1f-ef21-4eff-8ac6-52654e1cd7db')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-80bfbb1f-ef21-4eff-8ac6-52654e1cd7db button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-80bfbb1f-ef21-4eff-8ac6-52654e1cd7db');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+  <div id="id_5987f480-5d89-4ae7-a842-fdac0ad20211">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df_class_distribution')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_5987f480-5d89-4ae7-a842-fdac0ad20211 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df_class_distribution');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 10: Plot Class Distribution</span>
+<span class="n">df_class_distribution</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Class_ID&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Class Distribution in Training Data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Class ID&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Number of Instances&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7d3e2336ce21595c80f3af03f45a0ae6b4d79b54fff213ae60da56a61066e6a4.png" src="../../_images/7d3e2336ce21595c80f3af03f45a0ae6b4d79b54fff213ae60da56a61066e6a4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 11: Bounding Box Size Distribution</span>
+<span class="n">bbox_sizes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">label_path</span> <span class="ow">in</span> <span class="n">val_label_paths</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">label_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+            <span class="n">bbox_sizes</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">))</span>
+
+<span class="n">df_bbox</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bbox_sizes</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Width&quot;</span><span class="p">,</span> <span class="s2">&quot;Height&quot;</span><span class="p">])</span>
+
+<span class="c1"># Scatter plot of bounding box sizes</span>
+<span class="n">df_bbox</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Width&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Height&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bounding Box Size Distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Width (normalized)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Height (normalized)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5dd26565d150421a0bc90b8cd273e62b5a1b1581da869a5c6bfb9679a596222e.png" src="../../_images/5dd26565d150421a0bc90b8cd273e62b5a1b1581da869a5c6bfb9679a596222e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 12: Visualizing Annotations on Images</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_sample_image</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">label_path</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+    <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">label_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">class_id</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">box_w</span><span class="p">,</span> <span class="n">box_h</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">box_w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
+        <span class="n">y1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">box_h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="n">box_w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
+        <span class="n">y2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">y</span> <span class="o">+</span> <span class="n">box_h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+
+        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">class_id</span><span class="p">),</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">-</span> <span class="mi">5</span><span class="p">),</span>
+                    <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Test on a few images</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">plot_sample_image</span><span class="p">(</span><span class="n">val_label_paths</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">val_label_paths</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/675a7d4cbcfe41389815925e0ad936670db309141b58ebd47abd0c3944048830.png" src="../../_images/675a7d4cbcfe41389815925e0ad936670db309141b58ebd47abd0c3944048830.png" />
+<img alt="../../_images/6aa69127a04b7171958f53dace6136e820ecb7e647a7707b6526842af0c097d9.png" src="../../_images/6aa69127a04b7171958f53dace6136e820ecb7e647a7707b6526842af0c097d9.png" />
+<img alt="../../_images/b610d20b2cdf96c810132d6036c8a4805f23edd0b9b5c95995ea31d47337e412.png" src="../../_images/b610d20b2cdf96c810132d6036c8a4805f23edd0b9b5c95995ea31d47337e412.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 13: Check for Corrupt Images</span>
+<span class="n">corrupt_images</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">img_path</span> <span class="ow">in</span> <span class="n">val_label_paths</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">corrupt_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">corrupt_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">corrupt_images</span><span class="p">)</span><span class="si">}</span><span class="s2"> corrupt images.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Remove corrupt images</span>
+<span class="k">for</span> <span class="n">img_path</span> <span class="ow">in</span> <span class="n">corrupt_images</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🗑️ Removed: </span><span class="si">{</span><span class="n">img_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❌ Found 0 corrupt images.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 14: Check for Empty Label Files in Training Set</span>
+<span class="n">empty_labels</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">train_label_paths</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_extract_path</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;*.txt&quot;</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">label_path</span> <span class="ow">in</span> <span class="n">train_label_paths</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">label_path</span><span class="p">)</span><span class="o">.</span><span class="n">st_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># If label file is empty</span>
+        <span class="n">empty_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label_path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">empty_labels</span><span class="p">)</span><span class="si">}</span><span class="s2"> empty label files in TRAIN set.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Remove empty label files ONLY from the training set</span>
+<span class="k">for</span> <span class="n">label_path</span> <span class="ow">in</span> <span class="n">empty_labels</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">label_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🗑️ Removed empty train label file: </span><span class="si">{</span><span class="n">label_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❌ Found 77 empty label files in TRAIN set.
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/00019.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/00143.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/01131.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.192648.087.003747.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.192757.391.004579.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.192813.051.004767.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.192813.468.004772.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.192819.718.004847.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193227.870.007826.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193715.346.011277.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193716.262.011288.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193741.502.011591.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193753.914.011740.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193757.162.011779.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193804.326.011865.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193805.243.011876.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193809.075.011922.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193828.381.009679.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193834.981.012233.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193839.544.009813.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193922.130.012799.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193946.454.013091.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.193957.948.013229.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.194043.098.013771.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.194301.360.012956.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.194301.777.012961.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.194307.025.013024.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.194307.359.013028.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.210308.033.006533.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.210310.700.006565.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211125.554.005064.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211155.127.005419.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211428.152.007256.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211428.485.007260.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211428.901.007265.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211430.651.007286.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211432.484.007308.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211432.733.007311.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211522.964.007914.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211535.793.008068.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211827.894.010134.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211852.051.010424.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211954.778.011177.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.211958.610.011223.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.212303.789.013446.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.212328.779.013746.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.212352.687.014033.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.212353.020.014037.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.224041.781.007015.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.224046.363.007070.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161014.224653.973.011483.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.000632.052.008144.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.000635.129.008181.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.000638.377.008220.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.000640.041.008240.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.000817.505.009410.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.000857.989.009896.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001022.789.010914.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001031.944.011024.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001133.941.011768.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001159.249.012072.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001201.165.012095.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001201.507.012099.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001203.413.012122.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001205.333.012145.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001206.329.012157.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001206.413.012158.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001206.497.012159.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001210.077.012202.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001230.726.002511.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001237.237.012528.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001237.649.012533.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001238.401.012542.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161015.001238.901.012548.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161018.182948.628.000786.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161018.183100.933.001654.txt
+🗑️ Removed empty train label file: /content/fish_dataset/labels/train/20161018.183356.936.003766.txt
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 📌 Step 17: Check for Duplicate Images Across Splits</span>
+<span class="n">train_images</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_extract_path</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">)))</span>
+<span class="n">val_images</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_extract_path</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">)))</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_extract_path</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">)))</span>
+
+<span class="n">duplicates_train_val</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">val_images</span><span class="p">)</span>
+<span class="n">duplicates_train_test</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+<span class="n">duplicates_val_test</span> <span class="o">=</span> <span class="n">val_images</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">duplicates_train_val</span><span class="p">)</span><span class="si">}</span><span class="s2"> duplicates found between Train and Val.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">duplicates_train_test</span><span class="p">)</span><span class="si">}</span><span class="s2"> duplicates found between Train and Test.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;⚠️ </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">duplicates_val_test</span><span class="p">)</span><span class="si">}</span><span class="s2"> duplicates found between Val and Test.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>⚠️ 0 duplicates found between Train and Val.
+⚠️ 0 duplicates found between Train and Test.
+⚠️ 0 duplicates found between Val and Test.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "MichaelAkridge-NOAA/optics-si-hub",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/03_module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../04_model_card.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Model Card – One‑Page Quick Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="00_EDA_example_2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">🛠️ Exercise - Exploratory Data Analysis (EDA) | Example 02 Using FiftyOne Tool</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-sample-dataset">Workshop Sample Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-dataset">Download Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-dataset">Extract Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-yolo-object-detection-dataset-should-be-in-1-of-2-folder-structures">A YOLO Object Detection Dataset should be in 1 of 2 folder structures</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Optics Strategic Initiative Contributors
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <strong>Optics SI Hub</strong> | NOAA Open Science<br>
+<a href="mailto:michael.akridge@noaa.gov">Contact</a> | <a href="https://github.com/MichaelAkridge-NOAA/optics-si-hub">GitHub</a><br>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
