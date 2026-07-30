@@ -59,22 +59,6 @@ parts:
       - file: content/04_model_card.md
         title: Model Card Template
 
-  - caption: Hands-On Notebooks
-    numbered: false
-    chapters:
-      - file: content/03_module/00_EDA_example.ipynb
-        title: EDA Notebook Example
-      - file: content/03_module/00_EDA_example_2.ipynb
-        title: EDA Notebook Example 2
-      - file: content/03_module/02_dataset_prep_example.ipynb
-        title: Dataset Prep Notebook Example
-      - file: content/03_module/03_model_training_example.ipynb
-        title: Training Notebook Example
-      - file: content/04_module/02_ai4me_api_google_colab_demo.ipynb
-        title: API Inference Notebook Demo
-      - file: content/03_2025_Huggingface_User_Examples.ipynb
-        title: Hugging Face User Examples
-
   - caption: Hardware
     numbered: false
     chapters:
@@ -90,6 +74,22 @@ parts:
         title: Annotation Tooling Comparison
       - file: content/03_module/01_annotation_example.md
         title: Annotation Exercise Walkthrough
+
+  - caption: Hands-On Notebook Examples
+    numbered: false
+    chapters:
+      - file: content/03_module/00_EDA_example.ipynb
+        title: EDA Notebook Example
+      - file: content/03_module/00_EDA_example_2.ipynb
+        title: EDA Notebook Example 2
+      - file: content/03_module/02_dataset_prep_example.ipynb
+        title: Dataset Prep Notebook Example
+      - file: content/03_module/03_model_training_example.ipynb
+        title: Training Notebook Example
+      - file: content/04_module/02_ai4me_api_google_colab_demo.ipynb
+        title: API Inference Notebook Demo
+      - file: content/03_2025_Huggingface_User_Examples.ipynb
+        title: Hugging Face User Examples
   
   - caption: Resources
     numbered: false
