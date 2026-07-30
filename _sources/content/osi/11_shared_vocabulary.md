@@ -1,4 +1,4 @@
-# Shared Vocabulary: Optics SI AI/ML and Computer Vision
+# Shared Vocabulary 
 
 This page defines shared terms used across Optics SI workflows.
 Use these definitions to keep language consistent in SOPs, model cards, notebooks, reviews, and implementation docs.
