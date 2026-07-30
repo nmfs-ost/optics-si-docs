@@ -4,12 +4,10 @@
 Operational documentation and implementation guidance for the Optics Strategic Initiative (OSI) Cloud.
 
 ## What this covers
-- Program overview and operating model
 - End-to-end data and annotation pipelines
-- Hardware and camera information
+- Cloud processing workflows (including VIAME, Labelstudio, and others)
 - Software and toolchain guidance
 - Cloud storage conventions
-- Cloud processing workflows (including VIAME Web App and Girder)
 - Model lifecycle guidance (VIAME, Ultralytics, and bring-your-own-model)
 - Shared resources and FAQ
 
