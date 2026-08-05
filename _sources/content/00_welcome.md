@@ -1,6 +1,6 @@
-# Welcome to the Optics SI Docs | DRAFT
+# Welcome to the Optics SI Docs (DRAFT)
 
-The Optics Strategic Initiative (OSI) docs is a centeralized working knowledge base for shared documentation, repeatable workflows, and implementation guidance across optics-focused projects.
+The Optics Strategic Initiative (OSI) Docs is a centeralized working knowledge base for shared documentation, repeatable workflows, and implementation guidance across optics-focused projects.
 
 ## Notes on this version
 This site is being migrated from an older template into an OSI-first structure. Some pages are intentionally structured placeholders and will be expanded with production details in iterative updates.
