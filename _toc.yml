@@ -1,5 +1,5 @@
 # Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
+# Learn more at https://jupyterbook.org/v1/structure/toc.html
 format: jb-book
 title: Optics SI Docs
 root: content/00_welcome.md
