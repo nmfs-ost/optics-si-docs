@@ -1,7 +1,7 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 format: jb-book
-title: Optics SI Hub
+title: Optics SI Docs
 root: content/00_welcome.md
 defaults:
   titlesonly: True
