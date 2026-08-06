@@ -1,5 +1,9 @@
 # Cloud Storage
+## Optics SI Data Management Working Group
+- https://github.com/csbrown-noaa/optics-data-spec/
+- https://github.com/csbrown-noaa/optics-data-spec/blob/main/data_spec/spec.md
 
+## Tool Quick Links
 - [Google Cloud CLI cheat sheet](https://docs.cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf)
 - [Optics SI cloud tools repository](https://github.com/MichaelAkridge-NOAA/optics-si-cloud-tools)
 - [Jetstream repository](https://github.com/MichaelAkridge-NOAA/jetstream)
@@ -12,6 +16,7 @@
 
 - [Google Cloud reauthentication guide](https://docs.cloud.google.com/docs/authentication/reauthentication)
 
+## Proposed Standard Path: gs://[bucket-name]/[Year]/[Region]/[Survey_ID]/[sha256_hash].[ext]
 
 ## Suggested bucket layout
 - raw/
