@@ -496,7 +496,7 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage-types-what-to-pick">Cloud Storage Types &amp; What to Pick</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-optics-gcs-buckets-for-each-fmc">Dedicated Optics GCS Buckets for each FMC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fmc-bucket-map-and-listing">FMC Bucket Map and Listing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-quick-links">Tool Quick Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-design-goals">Storage design goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optics-si-data-management-working-group-todo">Optics SI Data Management Working Group (todo)</a></li>
@@ -529,16 +529,45 @@
 </ul>
 <p>For a deeper decision guide on storage types, tradeoffs, and architecture patterns, see <a class="reference internal" href="05a_cloud_storage.html"><span class="std std-doc">Understanding Cloud Storage for OSI</span></a>.</p>
 </section>
-<section id="dedicated-optics-gcs-buckets-for-each-fmc">
-<h2>Dedicated Optics GCS Buckets for each FMC<a class="headerlink" href="#dedicated-optics-gcs-buckets-for-each-fmc" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>nmfs-dev-uc1-afsc</p></li>
-<li><p>nmfs-dev-uc1-nefsc</p></li>
-<li><p>nmfs-dev-uc1-nwsc</p></li>
-<li><p>nmfs-dev-uc1-pifsc</p></li>
-<li><p>nmfs-dev-uc1-sefsc</p></li>
-<li><p>nmfs-dev-uc1-swsc</p></li>
-</ul>
+<section id="fmc-bucket-map-and-listing">
+<h2>FMC Bucket Map and Listing<a class="headerlink" href="#fmc-bucket-map-and-listing" title="Link to this heading">#</a></h2>
+<p>The map below shows regional collaboration coverage. Each FMC has a dedicated Optics GCS bucket</p>
+<p><img alt="NOAA Regional Collaboration Map" src="../../_images/NOAA-Regional-Collaboration-map.png" /></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>FMC</p></th>
+<th class="head text-left"><p>Dev Bucket</p></th>
+<th class="head text-left"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>AFSC</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">gs://nmfs-dev-uc1-afsc</span></code></p></td>
+<td class="text-left"><p>Alaska Fisheries Science Center workloads</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>NEFSC</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">gs://nmfs-dev-uc1-nefsc</span></code></p></td>
+<td class="text-left"><p>Northeast Fisheries Science Center workloads</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>NWFSC</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">gs://nmfs-dev-uc1-nwsc</span></code></p></td>
+<td class="text-left"><p>Northwest Fisheries Science Center workloads</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>PIFSC</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">gs://nmfs-dev-uc1-pifsc</span></code></p></td>
+<td class="text-left"><p>Pacific Islands Fisheries Science Center workloads</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>SEFSC</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">gs://nmfs-dev-uc1-sefsc</span></code></p></td>
+<td class="text-left"><p>Southeast Fisheries Science Center workloads</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>SWFSC</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">gs://nmfs-dev-uc1-swsc</span></code></p></td>
+<td class="text-left"><p>Southwest Fisheries Science Center workloads</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="tool-quick-links">
 <h2>Tool Quick Links<a class="headerlink" href="#tool-quick-links" title="Link to this heading">#</a></h2>
@@ -683,7 +712,7 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage-types-what-to-pick">Cloud Storage Types &amp; What to Pick</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-optics-gcs-buckets-for-each-fmc">Dedicated Optics GCS Buckets for each FMC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fmc-bucket-map-and-listing">FMC Bucket Map and Listing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-quick-links">Tool Quick Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-design-goals">Storage design goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optics-si-data-management-working-group-todo">Optics SI Data Management Working Group (todo)</a></li>
