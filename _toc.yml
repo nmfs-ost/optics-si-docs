@@ -37,6 +37,8 @@ parts:
     numbered: false
     chapters:
       - file: content/osi/05_cloud_storage.md
+      - file: content/osi/05a_cloud_storage.md
+        title: Understanding Cloud Storage for OSI
 
   - caption: Cloud Processing Pipelines
     numbered: false
