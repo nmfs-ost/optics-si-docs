@@ -67,7 +67,7 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Cloud Processing: VIAME Web App" href="06_cloud_processing_viame_web_app.html" />
+    <link rel="next" title="Understanding Cloud Storage for OSI: Object, Block, and File" href="05a_cloud_storage.html" />
     <link rel="prev" title="6. Dataset Prep" href="../03_module/02_dataset_prep.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -243,6 +243,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Storage</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cloud Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05a_cloud_storage.html">Understanding Cloud Storage for OSI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Processing Pipelines</span></p>
 <ul class="nav bd-sidenav">
@@ -494,8 +495,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage-types-what-to-pick">Cloud Storage Types &amp; What to Pick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-optics-gcs-buckets-for-each-fmc">Dedicated Optics GCS Buckets for each FMC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-quick-links">Tool Quick Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-design-goals">Storage design goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-bucket-layout">Suggested bucket layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optics-si-data-management-working-group-todo">Optics SI Data Management Working Group (todo)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-standard-path-gs-bucket-name-year-region-survey-id-sha256-hash-ext">Proposed Standard Path: gs://[bucket-name]/[Year]/[Region]/[Survey_ID]/[sha256_hash].[ext]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bucket-layout">Example bucket layout</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-and-validation-flow">Upload and validation flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-and-governance">Access and governance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-implementation-references">Recommended implementation references</a></li>
@@ -513,11 +519,35 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="cloud-storage">
 <h1>Cloud Storage<a class="headerlink" href="#cloud-storage" title="Link to this heading">#</a></h1>
+<section id="cloud-storage-types-what-to-pick">
+<h2>Cloud Storage Types &amp; What to Pick<a class="headerlink" href="#cloud-storage-types-what-to-pick" title="Link to this heading">#</a></h2>
+<p>There are three primary storage types offered by every major cloud provider:</p>
+<ul class="simple">
+<li><p>Object Storage (aka buckets. Google Cloud Storage)</p></li>
+<li><p>Block Storage (Google Persistent Disks)</p></li>
+<li><p>File Storage (Google Filestore)</p></li>
+</ul>
+<p>For a deeper decision guide on storage types, tradeoffs, and architecture patterns, see <a class="reference internal" href="05a_cloud_storage.html"><span class="std std-doc">Understanding Cloud Storage for OSI</span></a>.</p>
+</section>
+<section id="dedicated-optics-gcs-buckets-for-each-fmc">
+<h2>Dedicated Optics GCS Buckets for each FMC<a class="headerlink" href="#dedicated-optics-gcs-buckets-for-each-fmc" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>nmfs-dev-uc1-afsc</p></li>
+<li><p>nmfs-dev-uc1-nefsc</p></li>
+<li><p>nmfs-dev-uc1-nwsc</p></li>
+<li><p>nmfs-dev-uc1-pifsc</p></li>
+<li><p>nmfs-dev-uc1-sefsc</p></li>
+<li><p>nmfs-dev-uc1-swsc</p></li>
+</ul>
+</section>
+<section id="tool-quick-links">
+<h2>Tool Quick Links<a class="headerlink" href="#tool-quick-links" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf">Google Cloud CLI cheat sheet</a></p></li>
 <li><p><a class="reference external" href="https://github.com/MichaelAkridge-NOAA/optics-si-cloud-tools">Optics SI cloud tools repository</a></p></li>
 <li><p><a class="reference external" href="https://github.com/MichaelAkridge-NOAA/jetstream">Jetstream repository</a></p></li>
 </ul>
+</section>
 <section id="storage-design-goals">
 <h2>Storage design goals<a class="headerlink" href="#storage-design-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -528,8 +558,18 @@
 <li><p><a class="reference external" href="https://docs.cloud.google.com/docs/authentication/reauthentication">Google Cloud reauthentication guide</a></p></li>
 </ul>
 </section>
-<section id="suggested-bucket-layout">
-<h2>Suggested bucket layout<a class="headerlink" href="#suggested-bucket-layout" title="Link to this heading">#</a></h2>
+<section id="optics-si-data-management-working-group-todo">
+<h2>Optics SI Data Management Working Group (todo)<a class="headerlink" href="#optics-si-data-management-working-group-todo" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="github reference external" href="https://github.com/csbrown-noaa/optics-data-spec/">csbrown-noaa/optics-data-spec</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/csbrown-noaa/optics-data-spec/blob/main/data_spec/spec.md">csbrown-noaa/optics-data-spec</a></p></li>
+</ul>
+</section>
+<section id="proposed-standard-path-gs-bucket-name-year-region-survey-id-sha256-hash-ext">
+<h2>Proposed Standard Path: gs://[bucket-name]/[Year]/[Region]/[Survey_ID]/[sha256_hash].[ext]<a class="headerlink" href="#proposed-standard-path-gs-bucket-name-year-region-survey-id-sha256-hash-ext" title="Link to this heading">#</a></h2>
+</section>
+<section id="example-bucket-layout">
+<h2>Example bucket layout<a class="headerlink" href="#example-bucket-layout" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>raw/</p></li>
 <li><p>staged/</p></li>
@@ -616,11 +656,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="06_cloud_processing_viame_web_app.html"
+       href="05a_cloud_storage.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Cloud Processing: VIAME Web App</p>
+        <p class="prev-next-title">Understanding Cloud Storage for OSI: Object, Block, and File</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -642,8 +682,13 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-storage-types-what-to-pick">Cloud Storage Types &amp; What to Pick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dedicated-optics-gcs-buckets-for-each-fmc">Dedicated Optics GCS Buckets for each FMC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-quick-links">Tool Quick Links</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-design-goals">Storage design goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-bucket-layout">Suggested bucket layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optics-si-data-management-working-group-todo">Optics SI Data Management Working Group (todo)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proposed-standard-path-gs-bucket-name-year-region-survey-id-sha256-hash-ext">Proposed Standard Path: gs://[bucket-name]/[Year]/[Region]/[Survey_ID]/[sha256_hash].[ext]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bucket-layout">Example bucket layout</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-and-validation-flow">Upload and validation flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#access-and-governance">Access and governance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-implementation-references">Recommended implementation references</a></li>

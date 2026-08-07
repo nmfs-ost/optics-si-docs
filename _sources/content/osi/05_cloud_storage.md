@@ -1,5 +1,22 @@
 # Cloud Storage
 
+## Cloud Storage Types & What to Pick
+There are three primary storage types offered by every major cloud provider:
+- Object Storage (aka buckets. Google Cloud Storage)
+- Block Storage (Google Persistent Disks)
+- File Storage (Google Filestore)
+
+For a deeper decision guide on storage types, tradeoffs, and architecture patterns, see [Understanding Cloud Storage for OSI](05a_cloud_storage.md).
+
+## Dedicated Optics GCS Buckets for each FMC
+- nmfs-dev-uc1-afsc
+- nmfs-dev-uc1-nefsc
+- nmfs-dev-uc1-nwsc
+- nmfs-dev-uc1-pifsc
+- nmfs-dev-uc1-sefsc
+- nmfs-dev-uc1-swsc
+
+## Tool Quick Links
 - [Google Cloud CLI cheat sheet](https://docs.cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf)
 - [Optics SI cloud tools repository](https://github.com/MichaelAkridge-NOAA/optics-si-cloud-tools)
 - [Jetstream repository](https://github.com/MichaelAkridge-NOAA/jetstream)
@@ -12,8 +29,13 @@
 
 - [Google Cloud reauthentication guide](https://docs.cloud.google.com/docs/authentication/reauthentication)
 
+## Optics SI Data Management Working Group (todo)
+- https://github.com/csbrown-noaa/optics-data-spec/
+- https://github.com/csbrown-noaa/optics-data-spec/blob/main/data_spec/spec.md
 
-## Suggested bucket layout
+## Proposed Standard Path: gs://[bucket-name]/[Year]/[Region]/[Survey_ID]/[sha256_hash].[ext]
+
+## Example bucket layout
 - raw/
 - staged/
 - annotations/
