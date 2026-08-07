@@ -8,13 +8,20 @@ There are three primary storage types offered by every major cloud provider:
 
 For a deeper decision guide on storage types, tradeoffs, and architecture patterns, see [Understanding Cloud Storage for OSI](05a_cloud_storage.md).
 
-## Dedicated Optics GCS Buckets for each FMC
-- nmfs-dev-uc1-afsc
-- nmfs-dev-uc1-nefsc
-- nmfs-dev-uc1-nwsc
-- nmfs-dev-uc1-pifsc
-- nmfs-dev-uc1-sefsc
-- nmfs-dev-uc1-swsc
+## FMC Bucket Map and Listing
+
+The map below shows regional collaboration coverage. Each FMC has a dedicated Optics GCS bucket
+
+![NOAA Regional Collaboration Map](../../docs/images/NOAA-Regional-Collaboration-map.png)
+
+| FMC | Dev Bucket | Notes |
+| :---- | :---- | :---- |
+| AFSC | `gs://nmfs-dev-uc1-afsc` | Alaska Fisheries Science Center workloads |
+| NEFSC | `gs://nmfs-dev-uc1-nefsc` | Northeast Fisheries Science Center workloads |
+| NWFSC | `gs://nmfs-dev-uc1-nwsc` | Northwest Fisheries Science Center workloads |
+| PIFSC | `gs://nmfs-dev-uc1-pifsc` | Pacific Islands Fisheries Science Center workloads |
+| SEFSC | `gs://nmfs-dev-uc1-sefsc` | Southeast Fisheries Science Center workloads |
+| SWFSC | `gs://nmfs-dev-uc1-swsc` | Southwest Fisheries Science Center workloads |
 
 ## Tool Quick Links
 - [Google Cloud CLI cheat sheet](https://docs.cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf)
