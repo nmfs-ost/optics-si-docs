@@ -15,7 +15,7 @@ The Optics Strategic Initiative (OSI) envisions fostering a transformative shift
 - Erin Moreland - (AFSC- memeber)
 - Kresimir Williams - (AFSC- memeber)
 - Peter Chase - (NEFSC- memeber)
-- Andrew Leising -(SWFSC- memeber)
+- Andrew Leising - (SWFSC- memeber)
 - Tom Oliver - (PIFSC- memeber)
 - Ben Richards - (PIFSC- memeber)
 - Conor McManus - (NEFSC- memeber)
