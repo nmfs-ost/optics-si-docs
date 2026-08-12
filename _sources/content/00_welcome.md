@@ -9,16 +9,18 @@ This site is being migrated from an older template into an OSI-first structure. 
 The Optics Strategic Initiative (OSI) envisions fostering a transformative shift in the National Marine Fisheries Service's (NMFS) approach to optical data collection and processing, reshaping the landscape of resource management and environmental stewardship. We aim to catalyze the transition from traditional ship-based and aerial surveys to platform-agnostic, scalable automated systems, thereby enriching the value and applicability of optics. This journey involves investment in the development of low-cost acquisition hardware, AI-bearing payloads and Uncrewed Systems (UxS), machine learning-assisted image processing, and hybrid cloud processing. Striving to equalize access to these tools across diverse regions, our endeavor is to establish efficient, accessible, and smart optical data acquisition and analysis pipelines, capable of swiftly transforming vast volumes of data into accurate, management-relevant products. In a world grappling with climate change and resource scarcity, the OSI stands at the forefront of NOAA's commitment to a resilient Blue Economy and a Climate Ready Nation.
 
 ## OSI Working Group Members:
-- Matthew Campbell - SEFSC (SI lead)
-- Erin Moreland - AFSC
-- Thomas Oliver - PIFSC
-- Kresimir Williams - AFSC
-- Jennifer Fisher - NWFSC
-- Christian Reiss - SWFSC
-- Peter Chase - NEFSC
-- Elizabeth Clarke - NWFSC
-- Ben Richards - PIFSC
-- Derek Bolser - S&T
+- Matthew Campbell - (SEFSC - SI lead)
+- Derek Bolser - (OST -co-lead)
+- Jennifer Fisher - (NWFSC- memeber)
+- Erin Moreland - (AFSC- memeber)
+- Kresimir Williams - (AFSC- memeber)
+- Peter Chase - (NEFSC- memeber)
+- Andrew Leising -(SWFSC- memeber)
+- Tom Oliver - (PIFSC- memeber)
+- Ben Richards - (PIFSC- memeber)
+- Conor McManus - (NEFSC- memeber)
+- Rick Methot - (SDD - SI Advisor)
+- Elizabeth Clarke - (retired)
 
 ## What to do first
 1. Read the Overview section to understand scope and ownership.
