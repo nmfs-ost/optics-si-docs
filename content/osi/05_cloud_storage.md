@@ -2,6 +2,7 @@
 
 ## Cloud Storage Types & What to Pick
 There are three primary storage types offered by every major cloud provider:
+
 - Object Storage (aka buckets. Google Cloud Storage)
 - Block Storage (Google Persistent Disks)
 - File Storage (Google Filestore)
@@ -14,14 +15,14 @@ The map below shows regional collaboration coverage. Each FMC has a dedicated Op
 
 ![NOAA Regional Collaboration Map](../../docs/images/NOAA-Regional-Collaboration-map.png)
 
-| FMC | Dev Bucket | Notes |
-| :---- | :---- | :---- |
-| AFSC | `gs://nmfs-dev-uc1-afsc` | Alaska Fisheries Science Center workloads |
-| NEFSC | `gs://nmfs-dev-uc1-nefsc` | Northeast Fisheries Science Center workloads |
-| NWFSC | `gs://nmfs-dev-uc1-nwsc` | Northwest Fisheries Science Center workloads |
-| PIFSC | `gs://nmfs-dev-uc1-pifsc` | Pacific Islands Fisheries Science Center workloads |
-| SEFSC | `gs://nmfs-dev-uc1-sefsc` | Southeast Fisheries Science Center workloads |
-| SWFSC | `gs://nmfs-dev-uc1-swsc` | Southwest Fisheries Science Center workloads |
+| FMC | Dev Bucket |       | Notes |
+| :---- | :---- | :---- | :---- |
+| AFSC | `gs://nmfs-dev-uc1-afsc` | [URL](https://console.cloud.google.com/storage/browser/nmfs-dev-uc1-afsc) | Alaska Fisheries Science Center workloads |
+| NEFSC | `gs://nmfs-dev-uc1-nefsc` | [URL](https://console.cloud.google.com/storage/browser/nmfs-dev-uc1-nefsc) | Northeast Fisheries Science Center workloads |
+| NWFSC | `gs://nmfs-dev-uc1-nwsc` | [URL](https://console.cloud.google.com/storage/browser/nmfs-dev-uc1-nwsc) | Northwest Fisheries Science Center workloads |
+| PIFSC | `gs://nmfs-dev-uc1-pifsc` | [URL](https://console.cloud.google.com/storage/browser/nmfs-dev-uc1-pifsc) | Pacific Islands Fisheries Science Center workloads |
+| SEFSC | `gs://nmfs-dev-uc1-sefsc` | [URL](https://console.cloud.google.com/storage/browser/nmfs-dev-uc1-sefsc) | Southeast Fisheries Science Center workloads |
+| SWFSC | `gs://nmfs-dev-uc1-swsc` | [URL](https://console.cloud.google.com/storage/browser/nmfs-dev-uc1-swsc) | Southwest Fisheries Science Center workloads |
 
 ## Tool Quick Links
 - [Google Cloud CLI cheat sheet](https://docs.cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf)
@@ -33,14 +34,15 @@ The map below shows regional collaboration coverage. Each FMC has a dedicated Op
 - Clear environment separation (dev/test/prod)
 - Traceable data lineage and release history
 - Access controls by role and least privilege
-
 - [Google Cloud reauthentication guide](https://docs.cloud.google.com/docs/authentication/reauthentication)
 
 ## Optics SI Data Management Working Group (todo)
-- https://github.com/csbrown-noaa/optics-data-spec/
-- https://github.com/csbrown-noaa/optics-data-spec/blob/main/data_spec/spec.md
+- [Working Repo](https://github.com/csbrown-noaa/optics-data-spec/)
+- [NMFS Optics Data Cloud Migration: Minimum Viable Metadata Standard](https://github.com/csbrown-noaa/optics-data-spec/blob/main/data_spec/spec.md) (DRAFT)
 
-## Proposed Standard Path: gs://[bucket-name]/[Year]/[Region]/[Survey_ID]/[sha256_hash].[ext]
+## Proposed Standard Path
+
+`gs://[bucket-name]/[Year]/[Region]/[Survey_ID]/[sha256_hash].[ext]`
 
 ## Example bucket layout
 - raw/
